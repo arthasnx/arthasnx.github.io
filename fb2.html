@@ -26,7 +26,7 @@
 		FB.api("/me/friends",function(response){
 			//var images='<img src="http://graph.facebook.com/'+response.data[0].id+'/picture">';
 
-			var pictures;
+			var pictures=0;
 			for(i=0;i<response.data.length;i++){
 				pictures+='<img src="http://graph.facebook.com/'+response.data[i].id+'/picture">';
 			}
