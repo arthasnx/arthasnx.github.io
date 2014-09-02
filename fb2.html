@@ -24,7 +24,7 @@
 	}
 	var friendwall=function(){
 		FB.api("/me/friends",function(response){
-			var images='<img src="http://graph.facebook.com/'+response.data[0].id+'/picture">';
+			//var images='<img src="http://graph.facebook.com/'+response.data[0].id+'/picture">';
 
 			var pictures;
 			for(i=0;i<response.data.length;i++){
