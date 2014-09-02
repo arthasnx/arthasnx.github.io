@@ -1,0 +1,40 @@
+<html>
+<body>
+<script src="http://connect.facebook.net/zw_TW/all.js"></script>
+<script>
+	var ihandle=null;//216566131778225
+	window.fbAsyncInit=function(){//367626536722810
+		FB.init({appId:'367626536722810',status:true,cookie:true,xfbml:true,ouath:true});
+		ihandle=setInterval("FB.getLoginStatus(loginstatus)",1000);
+	}
+	var loginstatus=function(response){
+		if(!response.authResponse) return;
+		clearInterval(ihandle);
+		document.getElementById("command").value="/me";
+	}
+	var callfb=function(){
+		var command=document.getElementById("command").value;
+		FB.api(command,function(response){
+			document.getElementById("jsonres").innerHTML=JSON.stringify(response);
+		})
+	}
+	var friendwall=function(){
+		FB.api("/me/friends",function(response){
+			var images='<img src="http://graph.facebook.com/'+response.data[0].id+'/picture">';
+
+			var pictures;
+			for(i=0;i<response.data.length;i++){
+				pictures+='<img src="http://graph.facebook.com/'+response.data[i].id+'/picture">';
+			}
+			document.getElementById("jsonres").innerHTML=pictures;
+		})
+	}
+</script>
+<div id="fb-root"></div>
+<div class="fb-login-button" size="large" scope="user_status,email,read_friendlists,user_photos" autologoutlink="true"></div>
+<input id="command"></input>
+<button onClick="callfb()">call facebook</button>
+<button onClick="friendwall()">friend wall</button>
+<div id="jsonres"></div>
+</body>
+</html>
