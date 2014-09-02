@@ -2,9 +2,13 @@
 <body>
 <script src="http://connect.facebook.net/zw_TW/all.js"></script>
 <script>
-	var ihandle=null;//216566131778225
+	var ihandle=null;//216566131778225  localhost
+	/*var appid='367626536722810';
+	if (window.location.origin.indexOf("location")>-1){
+		appid='216566131778225'
+	}*/
 	window.fbAsyncInit=function(){//367626536722810
-		FB.init({appId:'367626536722810',status:true,cookie:true,xfbml:true,ouath:true});
+		FB.init({appId:367626536722810,status:true,cookie:true,xfbml:true,ouath:true});
 		ihandle=setInterval("FB.getLoginStatus(loginstatus)",1000);
 	}
 	var loginstatus=function(response){
@@ -31,10 +35,10 @@
 	}
 	var photowall=function(){
 		FB.api("/me/photos",function(response){
-			var pictures='<img src="'+response.picture+'>';
+			//var pictures='<img src="'+response.data[0].id.picture+'">';
 			var images;
-			for(i=0;i<response.data.picture;i++){
-				images+='<img src="'+response.picture+'>';
+			for(i=0;i<response.data.length;i++){
+				images+='<img src="'+response.data[i].picture+'">';
 			}
 			document.getElementById("jsonres").innerHTML=images;
 		})
