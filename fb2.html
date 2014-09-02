@@ -3,12 +3,12 @@
 <script src="http://connect.facebook.net/zw_TW/all.js"></script>
 <script>
 	var ihandle=null;//216566131778225  localhost
-	/*var appid='367626536722810';
-	if (window.location.origin.indexOf("location")>-1){
+	var appid='367626536722810';
+	if (window.location.origin.indexOf("localhost")>-1){
 		appid='216566131778225'
-	}*/
+	}
 	window.fbAsyncInit=function(){//367626536722810
-		FB.init({appId:367626536722810,status:true,cookie:true,xfbml:true,ouath:true});
+		FB.init({appId:appid,status:true,cookie:true,xfbml:true,ouath:true});
 		ihandle=setInterval("FB.getLoginStatus(loginstatus)",1000);
 	}
 	var loginstatus=function(response){
