@@ -26,9 +26,9 @@
 		FB.api("/me/friends",function(response){
 			//var images='<img src="http://graph.facebook.com/'+response.data[0].id+'/picture">';
 
-			var pictures=0;
+			var pictures;
 			for(i=0;i<response.data.length;i++){
-				pictures+='<img src="http://graph.facebook.com/'+response.data[i].id+'/picture">';
+				pictures=pictures+ '<img src="http://graph.facebook.com/'+response.data[i].id+'/picture">';
 			}
 			document.getElementById("jsonres").innerHTML=pictures;
 		})
